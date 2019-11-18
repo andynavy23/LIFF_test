@@ -1,1 +1,35 @@
-<iframe width="800" height="600" src="https://app.powerbi.com/view?r=eyJrIjoiZmEwYjBmYjMtMmVmNy00NTY2LWI2NDYtMjcwZTZjYmU3NjU2IiwidCI6Ijc1NDNlOTI1LTE1ZWYtNGI4MC1iNGU2LWZlNzFjOWUxMjQ4ZCIsImMiOjEwfQ%3D%3D" frameborder="0" allowFullScreen="true"></iframe>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Power BI to 識別身份測試</title>
+</head>
+
+<body>
+    <!--抓取頁面高度-->
+    <script type='text/javascript'>
+    window.onload = function() {
+        document.getElementById("IframeID").style.height = (document.documentElement.clientHeight) + "px";
+    }
+    </script>
+    <!--測試抓取身份-->
+    <script src="https://d.line-scdn.net/liff/1.0/sdk.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <p id="name"></p>
+    <script type="text/javascript">
+    liff.getProfile().then(function(profile) {
+        const userId = profile.userId;
+        const name = profile.displayName;
+        const pictureUrl = profile.pictureUrl;
+        const statusMessage = profile.statusMessage;
+    }).catch(function(error) {
+        console.log('error', err);
+    });
+    document.getElementById("name").innerHTML = name;
+    </script>
+    <!--Power BI 顯示介面-->
+    <iframe src="https://app.powerbi.com/view?r=eyJrIjoiZmEwYjBmYjMtMmVmNy00NTY2LWI2NDYtMjcwZTZjYmU3NjU2IiwidCI6Ijc1NDNlOTI1LTE1ZWYtNGI4MC1iNGU2LWZlNzFjOWUxMjQ4ZCIsImMiOjEwfQ%3D%3D" width="100%" id="IframeID"></iframe>
+</body>
+
+</html>
