@@ -15,17 +15,15 @@
     </script>
     <!--測試抓取身份-->
     <script src="https://d.line-scdn.net/liff/1.0/sdk.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <p id="name">aaa</p>
-    <script type="text/javascript">
-    liff.getProfile().then(function(profile) {
-        const userId = profile.userId;
-        const name = profile.displayName;
-        const pictureUrl = profile.pictureUrl;
-        const statusMessage = profile.statusMessage;
-    }).catch(function(error) {
-        console.log('error', err);
-    });
+    <script>
+    liff.getProfile()
+        .then(profile => {
+            const name = profile.displayName
+        })
+        .catch((err) => {
+            console.log('error', err);
+        });
     document.getElementById("name").innerHTML = name;
     </script>
     <!--Power BI 顯示介面-->
